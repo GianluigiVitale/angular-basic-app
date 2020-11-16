@@ -1,2 +1,6 @@
-<button class="btn btn-primary" [disabled]="!serverActive">Add Server</button>
+<button (click)="onCreateServer()" class="btn btn-primary" [disabled]="!serverActive">Add Server</button>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+<input type="text" [(ngModel)]="serverName">
+<p>{{ serverName }}</p>
 <p>the server {{ serverId }} is {{ getServerStatus() }}</p>
+<p>{{ serverCreationStatus }}</p>
