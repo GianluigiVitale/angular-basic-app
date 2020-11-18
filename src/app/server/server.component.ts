@@ -12,6 +12,10 @@ export class ServerComponent {
     serverCreationStatus = 'No server was created';
     serverName: string;
     serverCreated = false;
+    servers = ['Test Server', 'Test Server2']
+
+    display = true;
+	clicks = [];
 
     constructor() {
         this.serverStatus = Math.random() > 0.5 ? 'online' : 'offline';
@@ -32,13 +36,24 @@ export class ServerComponent {
     onCreateServer() {
         this.serverCreated = true;
         console.log(this.serverName);
-        
+        this.servers.push(this.serverName);
         this.serverCreationStatus = `Server was created ${this.serverName}`;
     }
 
     getColor() {
         return this.serverStatus == 'online' ? 'green' : 'red';
     }
+
+    toggleParagraph() {
+		this.clicks.push(this.clicks.length + 1);
+		this.display = !this.display;
+
+		return this.display;
+	}
+
+	backgroundCheck(click) {
+		return click >= 5 ? 'lightblue' : 'white';
+	}
 
     // onUpdateServerName(event: any) {
     //     this.serverName = event.target.value;
